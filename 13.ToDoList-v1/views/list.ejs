@@ -1,0 +1,26 @@
+<%# ejs works similar to html but with sophistication such as templating, use of scriptlets and layouts %>
+
+<%- include("header"); -%>
+
+  <div class="box" id="heading">
+    <h1><%=listHeading%></h1>
+  </div>
+
+  <div class="box">
+    <form class="" action="/" method="post">
+      <!-- ejs scriptlet usage below-->
+      <% for(var i=0; i<toDoList.length; i++) {%>
+      <div class="item">
+
+        <input type="checkbox">
+        <p><%=toDoList[i]%></p>
+
+      </div>
+      <% } %>
+      <input type="text" name="newItem" placeholder="new task" autocomplete="off">
+      <button type="submit" name="listHeading" value=<%=listHeading%>>+</button>
+
+    </form>
+  </div>
+
+<%- include("footer"); -%>
