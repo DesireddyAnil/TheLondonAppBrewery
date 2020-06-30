@@ -1,0 +1,19 @@
+.change-color{
+  color: orange;
+
+}
+.huge{
+  font-size: 16rem;
+}
+div{
+  text-align: center;
+}
+.inline-block{
+  display: inline-block;
+
+  margin: 0 auto 0;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
