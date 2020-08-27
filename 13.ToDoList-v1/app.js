@@ -69,7 +69,7 @@ app.get("/", function(req, res) {
 });
 
 app.get("/:customList",function(req, res){
-  const reqHeading = req.params.customList;
+  const reqHeading = _.capitalize(req.params.customList);
   List.findOne({name: reqHeading}, function(err, result){
     if(!err){
       if(!result){
@@ -103,9 +103,14 @@ app.post("/", function(req, res) { //very important stuff go through carefully
     res.redirect("/");
   } else {
     List.findOne({name: listHeading}, function(err, result){
-      result.items.push(itemDoc);
-      result.save();
-      res.redirect("/"+listHeading);
+      if(!err){
+        result.items.push(itemDoc);
+        result.save();
+        res.redirect("/"+listHeading);
+      }
+      else{
+        console.log(err);
+      }
     });
   }
 });
