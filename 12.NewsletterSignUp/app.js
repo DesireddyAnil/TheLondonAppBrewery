@@ -73,7 +73,10 @@ app.post("/failure", function(req, res) {
 
 
 
-app.listen(process.env.PORT, function() {
+
+//listen on process.env.PORT for web deployment
+//3000 for localhost
+app.listen(process.env.PORT || 3000, function() {
   console.log("server up and running on 3000");
 });
 //list id c0c7b17286

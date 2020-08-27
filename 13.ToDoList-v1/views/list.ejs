@@ -2,25 +2,30 @@
 
 <%- include("header"); -%>
 
-  <div class="box" id="heading">
-    <h1><%=listHeading%></h1>
-  </div>
+<div class="box" id="heading">
+  <h1><%=listHeading%></h1>
+</div>
 
-  <div class="box">
-    <form class="" action="/" method="post">
-      <!-- ejs scriptlet usage below-->
-      <% for(var i=0; i<toDoList.length; i++) {%>
-      <div class="item">
+<div class="box">
 
-        <input type="checkbox">
-        <p><%=toDoList[i]%></p>
+  <!-- ejs scriptlet usage below-->
 
-      </div>
-      <% } %>
-      <input type="text" name="newItem" placeholder="new task" autocomplete="off">
-      <button type="submit" name="listHeading" value=<%=listHeading%>>+</button>
+  <% for(var i=0; i<toDoList.length; i++) {%>
+  <form action="/delete" method="post">
+    <div class="item">
+      <!--cool stuff below  -->
+      <input type="checkbox" name="checkbox" value="<%=toDoList[i]._id%>" onChange="this.form.submit()">
+      <p><%=toDoList[i].name%></p>
+      <input type="hidden" name="listHeading" value="<%= listHeading %>"></input>
+    </div>
+  </form>
 
-    </form>
-  </div>
+  <% } %>
+  <form class="item" action="/" method="post">
+    <input type="text" name="newItem" placeholder="new task" autocomplete="off">
+    <button type="submit" name="listHeading" value=<%=listHeading%>>+</button>
+
+  </form>
+</div>
 
 <%- include("footer"); -%>
